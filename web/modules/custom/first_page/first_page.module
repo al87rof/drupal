@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for First Page module.
+ */
+
+function first_page_theme() {
+  return [
+    'first_page' => [
+      'variables' => [
+        'title' => NULL,
+        'content' => NULL,
+      ],
+    ],
+  ];
+}

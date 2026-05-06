@@ -1,0 +1,5 @@
+name: 'First Page'
+type: module
+description: 'Show current date time in format  24.08.2022 14:22'
+package: Custom
+core_version_requirement: ^10

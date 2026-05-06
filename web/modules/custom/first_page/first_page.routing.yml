@@ -1,0 +1,7 @@
+first_page.example:
+  path: '/my-first-page'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\first_page\Controller\FirstPageController::firstPage'
+  requirements:
+    _permission: 'access content'
