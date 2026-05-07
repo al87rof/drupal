@@ -34,6 +34,9 @@ final class FirstPageController extends ControllerBase {
       '#theme' => 'first_page',
       '#title' => "$titleDate — Моя перша стаття",
       '#content' => "поточна дата/час: $formattedDate",
+      '#cache' => [
+        'max-age' => 0, 
+      ],
     ];
   }
 

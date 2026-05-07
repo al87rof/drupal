@@ -1,5 +1,5 @@
 <?php
-
+use Drupal\node\NodeInterface;
 /**
  * @file
  * Primary module hooks for First Page module.
@@ -14,4 +14,20 @@ function first_page_theme() {
       ],
     ],
   ];
+}
+
+function first_page_node_presave(NodeInterface $node) {
+
+  if ($node->getType() === 'page') {
+
+    $current_date = new \DateTime();
+    $formatted_date = $current_date->format('d.m.Y');
+    $current_title = $node->getTitle();
+
+    if (!str_contains($current_title, $formatted_date)) {
+      $new_title = $formatted_date . ' — ' . $current_title;
+      $node->setTitle($new_title);
+
+    }
+  }
 }
