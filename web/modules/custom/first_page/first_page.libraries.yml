@@ -1,0 +1,4 @@
+clock:
+  version: 1.0
+  js:
+    js/clock.js: {}
