@@ -3,4 +3,8 @@ services:
     class: Drupal\first_page\Routing\RouteSubscriber
     tags:
       - { name: event_subscriber }
+  first_page.twig_extension:
+    class: Drupal\first_page\Twig\FirstPageTwigExtension
+    tags:
+      - { name: twig.extension }
 
