@@ -19,3 +19,11 @@ my_module.hello_page:
     _title: 'Hello'
   requirements:
     _permission: 'access content'
+
+first_page.test:
+  path: '/first-page/test'
+  defaults:
+    _title: 'Test'
+    _form: 'Drupal\first_page\Form\TestForm'
+  requirements:
+    _permission: 'access content'
