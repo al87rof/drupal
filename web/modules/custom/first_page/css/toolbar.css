@@ -1,0 +1,4 @@
+.toolbar-icon-create-page::before {
+  background-image: url('data:image/svg+xml;utf8,<svg>...</svg>');
+  background-size: 16px 16px;
+}

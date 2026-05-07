@@ -43,3 +43,26 @@ function first_page_node_presave(NodeInterface $node)
     }
   }
 }
+
+
+function first_page_toolbar() {
+  $items = [];
+
+  $items['create_page'] = [
+    '#type' => 'toolbar_item',
+    'tab' => [
+      '#type' => 'link',
+      '#title' => t('Create Page'),
+      '#url' => Drupal\Core\Url::fromRoute('node.add', ['node_type' => 'page']),
+      '#attributes' => [
+        'class' => ['toolbar-icon', 'toolbar-icon-create-page'],
+      ],
+    ],
+    '#weight' => 20,  // Вес для позиции в тулбаре
+    '#attached' => [
+      'library' => ['first_page/toolbar-styles'],
+    ],
+  ];
+
+  return $items;
+}

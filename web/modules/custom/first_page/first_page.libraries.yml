@@ -2,3 +2,9 @@ clock:
   version: 1.0
   js:
     js/clock.js: {}
+
+toolbar-styles:
+  version: 1.0
+  css:
+    theme:
+      css/toolbar.css: {}
