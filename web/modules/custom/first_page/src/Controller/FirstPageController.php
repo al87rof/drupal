@@ -3,7 +3,9 @@
 namespace Drupal\first_page\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use JetBrains\PhpStorm\ArrayShape;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Session\AccountInterface;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Returns responses for First page routes.
@@ -24,8 +26,8 @@ final class FirstPageController extends ControllerBase {
   }
 
 
-  #[ArrayShape(['#theme' => "string", '#title' => "string", '#content' => "string"])]
-  public function firstPage(){
+
+  public function firstPage(): array{
 
     $currentDate = new \DateTime();
     $formattedDate = $currentDate->format('d.m.Y H:i');
@@ -44,5 +46,25 @@ final class FirstPageController extends ControllerBase {
       ],
     ];
   }
+
+
+
+
+  /**
+   * Контент главной страницы.
+   */
+  public function frontPage() {
+    $user = \Drupal::currentUser();
+
+    if ($user->isAnonymous()) {
+      throw new AccessDeniedHttpException();
+    }else{
+      return [
+        '#markup' => '<h1>Добро пожаловать на главную страницу!</h1>',
+      ];
+    }
+  }
+
+
 
 }

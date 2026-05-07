@@ -5,3 +5,9 @@ first_page.example:
     _controller: '\Drupal\first_page\Controller\FirstPageController::firstPage'
   requirements:
     _permission: 'access content'
+
+front_page:
+  path: '/node'
+  defaults:
+    _controller: '\Drupal\first_page\Controller\FirstPageController::frontPage'
+    _title: 'Home'
