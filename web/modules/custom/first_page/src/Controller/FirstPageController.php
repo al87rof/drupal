@@ -67,4 +67,16 @@ final class FirstPageController extends ControllerBase {
 
 
 
+  public function helloPage() {
+    $config = \Drupal::config('system.site');
+    $siteName = $config->get('name');
+
+    return [
+      '#theme' => 'my_hello',
+      '#siteName' => $siteName,
+    ];
+  }
+
+
+
 }

@@ -11,3 +11,11 @@ front_page:
   defaults:
     _controller: '\Drupal\first_page\Controller\FirstPageController::frontPage'
     _title: 'Home'
+
+my_module.hello_page:
+  path: '/hello'
+  defaults:
+    _controller: '\Drupal\first_page\Controller\FirstPageController::helloPage'
+    _title: 'Hello'
+  requirements:
+    _permission: 'access content'
