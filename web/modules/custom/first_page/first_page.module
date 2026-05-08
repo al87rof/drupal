@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/first_page.views.inc';
 use Drupal\node\NodeInterface;
 
 /**
