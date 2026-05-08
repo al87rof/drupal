@@ -27,3 +27,10 @@ first_page.test:
     _form: 'Drupal\first_page\Form\TestForm'
   requirements:
     _permission: 'access content'
+first_page.count_nodes:
+  path: '/nodes-count'
+  defaults:
+    _controller: '\Drupal\first_page\Controller\FirstPageController::countNodesPage'
+    _title: 'Count Nodes'
+  requirements:
+    _permission: 'access content'

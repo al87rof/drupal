@@ -7,4 +7,6 @@ services:
     class: Drupal\first_page\Twig\FirstPageTwigExtension
     tags:
       - { name: twig.extension }
-
+  first_page.query_service:
+    class: Drupal\first_page\Services\Query\QueryService
+    arguments: ['@entity_type.manager']

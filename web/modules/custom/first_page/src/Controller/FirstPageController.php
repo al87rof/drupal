@@ -3,14 +3,26 @@
 namespace Drupal\first_page\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Session\AccountInterface;
+use Drupal\first_page\Services\Query\QueryService;
+use Drupal\node\Entity\Node;
+use Drupal\node\Plugin\views\argument\Type;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
  * Returns responses for First page routes.
  */
 final class FirstPageController extends ControllerBase {
+
+
+  public function __construct(protected readonly QueryService $queryService) {}
+
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('first_page.query_service')
+    );
+  }
+
 
   /**
    * Builds the response.
@@ -76,6 +88,24 @@ final class FirstPageController extends ControllerBase {
       '#siteName' => $siteName,
     ];
   }
+
+
+
+  public function countNodesPage() {
+    $totalNodes = $this->queryService->countNodesByType('page');
+
+    return [
+      '#theme' => 'nodes_count',
+      '#totalNodes' => $totalNodes,
+
+      '#cache' => [
+        'max-age' => 0,
+      ],
+    ];
+  }
+
+
+
 
 
 

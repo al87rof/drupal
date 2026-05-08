@@ -23,7 +23,14 @@ function first_page_theme()
         'siteName' => NULL,
       ],
       'template' => 'my-hello',
-    ]
+    ],
+    'nodes_count' =>[
+      'variables' => [
+        'totalNodes' => 0
+      ],
+      'template' => 'nodes-count',
+    ],
+
   ];
 }
 
