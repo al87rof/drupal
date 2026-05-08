@@ -1,0 +1,48 @@
+<?php
+
+function first_page_schema() {
+  $schema['test_table'] = [
+    'description' => 'My custom table',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary key',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'nid' => [
+        'description' => 'Node ID',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'data' => [
+        'description' => 'Data',
+        'type' => 'blob',
+        'size' => 'big',
+      ],
+      'status' => [
+        'description' => 'Status',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'nid_idx' => ['nid'],
+      'status_idx' => ['status'],
+    ],
+  ];
+
+  return $schema;
+}
+
+//  php vendor/bin/drush updb -y
+
+function first_page_update_10001() {
+  $schema = first_page_schema();
+  \Drupal::database()->schema()->createTable('test_table', $schema['test_table']);
+}
