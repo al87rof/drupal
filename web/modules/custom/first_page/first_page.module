@@ -73,3 +73,23 @@ function first_page_toolbar() {
 
   return $items;
 }
+
+
+/**
+ * Implements hook_cron().
+ */
+function first_page_cron() {
+  $queue = \Drupal::queue('node_update_worker');
+  $yesterday = time() - 86400;
+  $query = \Drupal::entityQuery('node')
+    ->condition('changed', $yesterday, '<')
+    ->condition('status', 1)
+    ->accessCheck(FALSE);
+
+  $nids = $query->execute();
+
+  foreach ($nids as $nid) {
+    $queue->createItem(['nid' => $nid]);
+  }
+}
+
