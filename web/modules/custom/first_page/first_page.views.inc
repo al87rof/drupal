@@ -10,8 +10,9 @@ function first_page_views_data() {
 
   $data['test_table']['table']['base'] = [
     'field' => 'id',
-    'title' => t('Items from test_table'),
-    'help' => t('Show list items from test_table.'),
+    'title' => 'Items from test_table',
+    'help' => 'Show list items from test_table.',
+    'wizard_id' => 'test_table_wizard',
   ];
 
   // Join with node table.
