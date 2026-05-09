@@ -34,3 +34,10 @@ first_page.count_nodes:
     _title: 'Count Nodes'
   requirements:
     _permission: 'access content'
+first_page.settings_form:
+  path: '/admin/config/first-page-settings'
+  defaults:
+    _form: '\Drupal\first_page\Form\SettingsForm'
+    _title: 'Settings  First Page'
+  requirements:
+    _permission: 'administer site configuration'
