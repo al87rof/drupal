@@ -93,3 +93,10 @@ function first_page_cron() {
   }
 }
 
+function first_page_preprocess_views_view(&$variables) {
+ // if ($variables['id'] == 'test_exposed_form') {
+    $variables['#attached']['library'][] = 'first_page/exposed-autosubmit';
+  //}
+}
+
+

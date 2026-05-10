@@ -8,3 +8,12 @@ toolbar-styles:
   css:
     theme:
       css/toolbar.css: {}
+
+exposed-autosubmit:
+  version: 1.0
+  js:
+    js/exposed_autosubmit.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
