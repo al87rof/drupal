@@ -48,3 +48,10 @@ first_page.dump_entity:
     _title: 'Entity Dump'
   requirements:
     _permission: 'access content'
+first_page.batch_form:
+  path: '/batch-form'
+  defaults:
+    _form: '\Drupal\first_page\Form\BatchForm'
+    _title: 'Batch Form'
+  requirements:
+    _permission: 'administer content'
