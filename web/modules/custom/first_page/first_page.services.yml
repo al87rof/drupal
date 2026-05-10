@@ -10,3 +10,8 @@ services:
   first_page.query_service:
     class: Drupal\first_page\Services\Query\QueryService
     arguments: ['@entity_type.manager']
+  first_page.weather_service:
+    class: Drupal\first_page\Services\Weather\WeatherService
+    arguments:
+      - '@http_client'
+      - '@cache.default'
