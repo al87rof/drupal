@@ -105,7 +105,16 @@ final class FirstPageController extends ControllerBase {
   }
 
 
+  public function dumpPage() {
 
+    $dump = $this->queryService->dumpEntity('node', 1);
+
+    $output = '<pre>' . print_r($dump, TRUE) . '</pre>';
+
+    return [
+      '#markup' => $output,
+    ];
+  }
 
 
 

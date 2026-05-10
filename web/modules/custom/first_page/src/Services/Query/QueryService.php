@@ -19,4 +19,44 @@ class QueryService {
       ->count()
       ->execute();
   }
+
+
+
+  public function dumpEntity($entityType, $entityId) {
+    try {
+      $entity = $this->entityTypeManager
+        ->getStorage($entityType)
+        ->load($entityId);
+
+      if (!$entity) {
+        return "Entity not found: $entityType:$entityId";
+      }
+
+
+      $dump = [
+        'Type' => $entityType,
+        'ID' => $entityId,
+        'Label' => $entity->label(),
+        'UUID' => $entity->uuid(),
+        'Bundle' => $entity->bundle(),
+      ];
+
+
+      foreach ($entity as $fieldName => $fieldItemList) {
+
+        if (!$entity->get($fieldName)->access('view')) {
+          continue;
+        }
+
+
+        $dump['Field: ' . $fieldName] = $fieldItemList->value ?? $fieldItemList->getString();
+      }
+
+      return $dump;
+
+    } catch (\Exception $e) {
+      return "Error: " . $e->getMessage();
+    }
+  }
+
 }

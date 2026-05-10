@@ -41,3 +41,10 @@ first_page.settings_form:
     _title: 'Settings  First Page'
   requirements:
     _permission: 'administer site configuration'
+first_page.dump_entity:
+  path: '/dump-entity'
+  defaults:
+    _controller: '\Drupal\first_page\Controller\FirstPageController::dumpPage'
+    _title: 'Entity Dump'
+  requirements:
+    _permission: 'access content'
