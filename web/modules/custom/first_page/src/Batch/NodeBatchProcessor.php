@@ -11,7 +11,6 @@ class NodeBatchProcessor {
 
     $node = \Drupal::entityTypeManager()
       ->getStorage('node')
-      ->accessCheck(TRUE)
       ->load($nid);
 
     if ($node) {

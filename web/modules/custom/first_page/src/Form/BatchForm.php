@@ -22,7 +22,7 @@ class BatchForm extends FormBase {
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $nids = \Drupal::entityQuery('node')
-      ->condition('type', 'article')->accessCheck(FALSE)
+      ->condition('type', 'page')->accessCheck(FALSE)
       ->execute();
 
 
@@ -30,7 +30,7 @@ class BatchForm extends FormBase {
 
     foreach ($nids as $nid) {
       $operations[] = [
-        '\Drupal\my_module\Batch\NodeBatchProcessor::processNode',
+        '\Drupal\first_page\Batch\NodeBatchProcessor::processNode',
         [$nid],
       ];
     }
@@ -39,7 +39,7 @@ class BatchForm extends FormBase {
     $batch = [
       'title' => t('Processing nodes'),
       'operations' => $operations,
-      'finished' => '\Drupal\my_module\Batch\NodeBatchProcessor::finished',
+      'finished' => '\Drupal\first_page\Batch\NodeBatchProcessor::finished',
     ];
 
     batch_set($batch);
